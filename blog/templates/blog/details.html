@@ -1,0 +1,57 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-3">
+<h3 class='text-white my-5'> </h3>
+</div>
+<div class='col-sm-6 text-white'>
+<h3 class="text-white my-5">{{title}}</h3>
+<form action="">
+{% csrf_token %}
+<div class="blog-post">
+        <h2 class="blog-post-title">{{form.title}}</h2>
+        <p class="blog-post-meta">January 1, 2014 by <a href="#">{{form.author}}</a></p><br><br>
+
+        <p class='text-justify'>{{form.desc}}</p>
+        <hr>   
+        </blockquote>
+      </div>
+<p class='text-center'>
+<div class="container">
+<h2>Comments</h2><hr>
+{% if not form.commentt.all %}
+<p class= "text-warning">No comment yet. Be the firs to comment.</p>
+{% endif %}
+
+</form>
+{% for comment in form.commentt.all %}
+<article>
+<strong class= "text-primary">{{comment.name}} at {{comment.timestamp}}</strong><br>
+{{comment.body}}<br><br><hr>
+</article>
+
+
+{% endfor %}
+<h2>Submit your comment:</h2>
+
+<form action="" method ='POST'>
+{% csrf_token %}
+{{comments.as_p}}
+<p class='text-center'><input type="submit" value="Submit" class='btn btn-primary'></p>
+</form>
+
+
+
+</div>
+<a href="{% url 'home' %}" class="btn btn-dark btn-lg">Go Home</a>
+{% if request.user.is_authenticated %}
+<a href="{% url 'dashboard' %}" class="btn btn-dark btn-lg">Dashboard</a>
+{% endif %}
+</p>
+
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-3">
+<h3 class='text-white my-5'> </h3>
+</div>
+<div class='col-sm-6'>
+<h3 class="text-white my-5">Search Reasult for: <span class="text-warning">{{query}}<span></h3><br>
+{% if reasult|length < 1 %}
+
+<h2 class="text-danger"> No search reasults...... </h2>
+<h2 class="text-white">Your search <span class="text-warning">""{{query}}""</span> didnot match any documents.<br>
+<br>
+<span class='font-italic'>Suggestions:<br>
+Try different keywords.</span></h2>>
+
+{% endif %}
+
+{% for post in reasult %}
+  <div class="jumbotron text-white rounded bg-dark">
+  <h1 class="display-5">{{post.title}}</h1>
+  <hr class="my-4">
+  <p class='text-justify'>{{post.desc|truncatechars:100}}</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'details' post.id %}" role="button">Read more</a>
+</div>
+  {% endfor %}
+  
+  
+</div>
+
+
+{% endblock content %}

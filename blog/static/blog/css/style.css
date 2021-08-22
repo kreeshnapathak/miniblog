@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(75, 74, 74);
+
+}
+
+form {
+
+    color:whitesmoke
+}
+
+
+.form-control {
+    background-color: rgb(177,168,168);
+}
+
+.jumbotron {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+  
+
+
+
+
